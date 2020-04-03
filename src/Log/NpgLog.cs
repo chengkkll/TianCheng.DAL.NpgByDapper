@@ -95,7 +95,7 @@ namespace TianCheng.DAL.NpgByDapper
                             fromEmail: "tianchengok2019@163.com",
                             toEmail: toEmail,
                             mailServer: "smtp.163.com",
-                            restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Error,
+                            restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Fatal,
                             networkCredential: NetworkCredential,
                             outputTemplate: "[{Level}] {NewLine}{Message} {NewLine}{Exception}",
                             mailSubject: "系统错误-提醒邮件");
