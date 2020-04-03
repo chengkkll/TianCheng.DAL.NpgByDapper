@@ -12,7 +12,7 @@ namespace WebDemo.DAL
     /// <summary>
     /// 
     /// </summary>
-    public class MockGuidDAL : GuidOperation<MockGuidDB>
+    public class MockGuidDAL : GuidOperation<MockGuidPO>
     {
         protected override string TableName { get; set; } = "mock_guid";
 

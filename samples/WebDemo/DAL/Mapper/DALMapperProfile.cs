@@ -3,6 +3,9 @@ using WebDemo.Model;
 
 namespace WebDemo.DAL.Mapper
 {
+    /// <summary>
+    /// 持久化对象与数据领域对象的转换
+    /// </summary>
     public class DALMapperProfile : AutoMapper.Profile, IDBAutoProfile
     {
         /// <summary>
@@ -18,8 +21,8 @@ namespace WebDemo.DAL.Mapper
         public void Register()
         {
             //时间与字符串的处理
-            CreateMap<MockGuidDB, MockGuidInfo>();
-            CreateMap<MockGuidInfo, MockGuidDB>();
+            CreateMap<MockGuidPO, MockGuidInfo>();
+            CreateMap<MockGuidInfo, MockGuidPO>();
         }
     }
 }
