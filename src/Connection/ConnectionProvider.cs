@@ -70,8 +70,7 @@ namespace TianCheng.DAL.NpgByDapper
             
             if (options == null)
             {
-                TianCheng.Log.CommonLog.Logger.Warning("无法找到数据库配置信息");
-                throw new Exception("无法找到数据库配置信息");
+                throw new NpgConfigurationException("无法找到数据库配置信息");
             }
 
             var connList = options.Connection;

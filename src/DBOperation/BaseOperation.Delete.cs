@@ -56,10 +56,9 @@ namespace TianCheng.DAL.NpgByDapper
                 // 执行删除命令
                 connection.ExecuteScalar<IdType>(DefaultRemoveByIdSQL, new { id }, tran, commandTimeout);
             }
-            catch (Exception te)
+            catch (Exception ex)
             {
-                NpgLog.Logger.Warning(te, $"Remove操作错误  \r\nsql：{DefaultRemoveByIdSQL}   \r\n操作id：{id}");
-                throw;
+                throw new NpgOperationException(ex, $"Remove操作错误  \r\nsql：{DefaultRemoveByIdSQL}   \r\n操作id：{id}");
             }
 
             // 关闭数据库连接
@@ -127,10 +126,9 @@ namespace TianCheng.DAL.NpgByDapper
                 // 执行删除命令
                 connection.ExecuteScalar<IdType>(sql, param, tran, commandTimeout);
             }
-            catch (Exception te)
+            catch (Exception ex)
             {
-                NpgLog.Logger.Warning(te, $"Remove操作错误  \r\nsql：{sql}   \r\n操作id：{ids}");
-                throw;
+                throw new NpgOperationException(ex, $"Remove操作错误  \r\nsql：{sql}   \r\n操作id：{ids}");
             }
 
             // 关闭数据库连接
@@ -186,10 +184,9 @@ namespace TianCheng.DAL.NpgByDapper
                 // 执行逻辑删除命令
                 connection.ExecuteScalar<IdType>(sql, new { id }, tran, commandTimeout);
             }
-            catch (Exception te)
+            catch (Exception ex)
             {
-                NpgLog.Logger.Warning(te, $"Delete操作错误  \r\nsql：{sql}   \r\n操作id：{id}");
-                throw;
+                throw new NpgOperationException(ex, $"Delete操作错误  \r\nsql：{sql}   \r\n操作id：{id}");
             }
 
             // 关闭数据库连接
@@ -260,10 +257,9 @@ namespace TianCheng.DAL.NpgByDapper
                 // 执行删除命令
                 connection.ExecuteScalar<IdType>(sql, param, tran, commandTimeout);
             }
-            catch (Exception te)
+            catch (Exception ex)
             {
-                NpgLog.Logger.Warning(te, $"Remove数据异常  \r\nsql：{sql}   \r\n操作id：{ids.ToJson()}");
-                throw;
+                throw new NpgOperationException(ex, $"Delete操作异常  \r\nsql：{sql}   \r\n操作id：{ids.ToJson()}");
             }
 
             // 关闭数据库连接
@@ -318,10 +314,9 @@ namespace TianCheng.DAL.NpgByDapper
                 // 执行逻辑删除命令
                 connection.ExecuteScalar<IdType>(sql, new { id }, tran, commandTimeout);
             }
-            catch (Exception te)
+            catch (Exception ex)
             {
-                NpgLog.Logger.Warning(te, $"Undelete操作错误  \r\nsql：{sql}   \r\n操作id：{id}");
-                throw;
+                throw new NpgOperationException(ex, $"Undelete操作错误  \r\nsql：{sql}   \r\n操作id：{id}");
             }
 
             // 关闭数据库连接
@@ -395,10 +390,9 @@ namespace TianCheng.DAL.NpgByDapper
                 // 执行删除命令
                 connection.ExecuteScalar<IdType>(sql, param, tran, commandTimeout);
             }
-            catch (Exception te)
+            catch (Exception ex)
             {
-                NpgLog.Logger.Warning(te, $"Undelete操作错误  \r\nsql：{sql}   \r\n操作id：{ids.ToJson()}");
-                throw;
+                throw new NpgOperationException(ex, $"Undelete操作错误  \r\nsql：{sql}   \r\n操作id：{ids.ToJson()}");
             }
 
             // 关闭数据库连接
@@ -427,10 +421,9 @@ namespace TianCheng.DAL.NpgByDapper
                 // 执行删除命令
                 connection.ExecuteScalar<IdType>(sql, transaction: tran, commandTimeout: commandTimeout);
             }
-            catch (Exception te)
+            catch (Exception ex)
             {
-                NpgLog.Logger.Warning(te, $"清空表错误  \r\nsql：{sql} ");
-                throw;
+                throw new NpgOperationException(ex, $"清空表错误  \r\nsql：{sql} ");
             }
 
             // 关闭数据库连接

@@ -78,7 +78,7 @@ namespace TianCheng.DAL.NpgByDapper
             // 检查数据
             if (string.IsNullOrWhiteSpace(TableName))
             {
-                throw new Exception("请指定表名");
+                throw new NpgTableNameNullException($"请为{this.GetType().FullName}指定表名");
             }
 
             // 生成一些常用的数据
@@ -154,10 +154,9 @@ namespace TianCheng.DAL.NpgByDapper
                 {
                     connection.Open();
                 }
-                catch (Exception te)
+                catch (Exception ex)
                 {
-                    NpgLog.Logger.Warning(te, $"数据库链接超时。链接字符串：{ConnectionString}");
-                    throw;
+                    throw new NpgConnectionException(ex, ConnectionString);
                 }
             }
         }

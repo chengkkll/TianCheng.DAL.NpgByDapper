@@ -70,10 +70,9 @@ namespace TianCheng.DAL.NpgByDapper
             {
                 result = connection.Query<T>(DefaultSelectByIdSQL, param, tran, commandTimeout: commandTimeout).SingleOrDefault();
             }
-            catch (Exception te)
+            catch (Exception ex)
             {
-                NpgLog.Logger.Warning(te, $"按id查询异常，sql：{DefaultSelectByIdSQL}   查询id：{id}");
-                throw;
+                throw new NpgOperationException(ex, $"按id查询异常，sql：{DefaultSelectByIdSQL}   查询id：{id}");
             }
             // 关闭数据库连接
             ConnectionClose(connection, tran);
@@ -170,10 +169,9 @@ namespace TianCheng.DAL.NpgByDapper
             {
                 result = connection.Query<T>(sql, parameters, transaction: tran, commandTimeout: commandTimeout);
             }
-            catch (Exception te)
+            catch (Exception ex)
             {
-                NpgLog.Logger.Warning(te, $"按sql查询异常  \r\nsql：{sql}  \r\n页号：{pageIndex}  \r\n每页数据量：{pageSize}  \r\n查询参数：{parameters?.ToJson()}");
-                throw;
+                throw new NpgOperationException(ex, $"按sql查询异常  \r\nsql：{sql}  \r\n页号：{pageIndex}  \r\n每页数据量：{pageSize}  \r\n查询参数：{parameters?.ToJson()}");
             }
             // 关闭数据库连接
             ConnectionClose(connection, tran);
@@ -308,10 +306,9 @@ namespace TianCheng.DAL.NpgByDapper
             {
                 count = connection.ExecuteScalar<int>(sql, parameters, transaction: tran, commandTimeout: commandTimeout);
             }
-            catch (Exception te)
+            catch (Exception ex)
             {
-                NpgLog.Logger.Warning(te, $"按sql查询异常  \r\nsql：{sql}  \r\n查询参数：{parameters?.ToJson()}");
-                throw;
+                throw new NpgOperationException(ex, $"按sql查询异常  \r\nsql：{sql}  \r\n查询参数：{parameters?.ToJson()}");
             }
             // 关闭数据库连接
             ConnectionClose(connection, tran);

@@ -68,10 +68,9 @@ namespace TianCheng.DAL.NpgByDapper
                 // 执行插入命令
                 obj.id = connection.ExecuteScalar<IdType>(sql, obj, tran, commandTimeout);
             }
-            catch (Exception te)
+            catch (Exception ex)
             {
-                NpgLog.Logger.Warning(te, $"Insert数据异常  \r\nsql：{sql}   \r\n插入对象：{obj.ToJson()}");
-                throw;
+                throw new NpgOperationException(ex, $"Insert数据异常  \r\nsql：{sql}   \r\n插入对象：{obj.ToJson()}");
             }
 
             // 关闭数据库连接
@@ -113,10 +112,9 @@ namespace TianCheng.DAL.NpgByDapper
                     data.ElementAt(ri++).SetId(reader.GetValue(0).ToString());
                 };
             }
-            catch (Exception te)
+            catch (Exception ex)
             {
-                NpgLog.Logger.Warning(te, $"Insert数据集合异常 \r\nsql：{sql}   \r\n插入对象：{data.ToJson()}");
-                throw;
+                throw new NpgOperationException(ex, $"Insert数据集合异常 \r\nsql：{sql}   \r\n插入对象：{data.ToJson()}");
             }
             // 关闭数据库连接
             ConnectionClose(connection, tran);
@@ -207,7 +205,7 @@ namespace TianCheng.DAL.NpgByDapper
             IDbConnection connection = tran != null ? tran.Connection : GetConnection();
 
             DynamicParameters param = new DynamicParameters();
-            foreach(var p in PropertyList)
+            foreach (var p in PropertyList)
             {
                 param.Add($"{p.Name}", p.GetValue(obj));
             }
@@ -219,10 +217,9 @@ namespace TianCheng.DAL.NpgByDapper
                 // 执行更新命令
                 connection.ExecuteScalar<IdType>(DefaultUpdateSQL, param, tran, commandTimeout);
             }
-            catch (Exception te)
+            catch (Exception ex)
             {
-                NpgLog.Logger.Warning(te, $"Update数据异常  \r\nsql：{DefaultUpdateSQL}   \r\n更新对象：{param.ToJson()}");
-                throw;
+                throw new NpgOperationException(ex, $"Update数据异常  \r\nsql：{DefaultUpdateSQL}   \r\n更新对象：{param.ToJson()}");
             }
             // 关闭数据库连接
             ConnectionClose(connection, tran);
@@ -249,10 +246,9 @@ namespace TianCheng.DAL.NpgByDapper
                 // 执行更新命令
                 object result1 = connection.ExecuteScalar(updateSql, parameters, tran, commandTimeout);
             }
-            catch (Exception te)
+            catch (Exception ex)
             {
-                NpgLog.Logger.Warning(te, $"sql命令更新数据异常  \r\nsql：{connection}   \r\n更新参数：{parameters.ToJson()}");
-                throw;
+                throw new NpgOperationException(ex, $"sql命令更新数据异常  \r\nsql：{connection}   \r\n更新参数：{parameters.ToJson()}");
             }
 
             // 关闭数据库连接
