@@ -53,7 +53,7 @@ namespace NpgBenchmark.DAL
 
     }
 
-    public class GuidQuery : QueryInfo
+    public class GuidQuery : QueryObject
     {
         public string FirstName { get; set; }
 

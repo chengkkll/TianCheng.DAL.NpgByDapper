@@ -178,7 +178,7 @@ namespace TianCheng.DAL.NpgByDapper
         /// <summary>
         /// 仅用于id操作的一个实例
         /// </summary>
-        private static readonly IDbId<IdType> IdInstance = new T();
+        private static readonly IPrimaryKey<IdType> IdInstance = new T();
         #endregion
     }
 

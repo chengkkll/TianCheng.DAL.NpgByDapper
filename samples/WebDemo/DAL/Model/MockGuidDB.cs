@@ -6,7 +6,7 @@ using TianCheng.DAL.NpgByDapper;
 
 namespace WebDemo.DAL
 {
-    public class MockGuidDB : GuidId
+    public class MockGuidDB : GuidPrimaryKey
     {
         public string first_name { get; set; }
         public string last_name { get; set; }

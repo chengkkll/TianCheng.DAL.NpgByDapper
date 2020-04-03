@@ -14,7 +14,7 @@ namespace TianCheng.DAL.NpgByDapper
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public partial class BaseOperation<T, IdType> : IDBOperationRegister
-        where T : IDbId<IdType>, new()
+        where T : IPrimaryKey<IdType>, new()
     {
         #region Single
         /// <summary>
@@ -105,7 +105,7 @@ namespace TianCheng.DAL.NpgByDapper
         /// <param name="tran"></param>
         /// <param name="commandTimeout"></param>
         /// <returns></returns>
-        public T First<Q>(string conditionSql, Q query, IDbTransaction tran = null, int? commandTimeout = null) where Q : QueryInfo
+        public T First<Q>(string conditionSql, Q query, IDbTransaction tran = null, int? commandTimeout = null) where Q : QueryObject
         {
             query.Page.Index = 0;
             query.Page.Size = 1;
@@ -120,7 +120,7 @@ namespace TianCheng.DAL.NpgByDapper
         /// <param name="tran"></param>
         /// <param name="commandTimeout"></param>
         /// <returns></returns>
-        public Info First<Info, Q>(string conditionSql, Q query, IDbTransaction tran = null, int? commandTimeout = null) where Q : QueryInfo
+        public Info First<Info, Q>(string conditionSql, Q query, IDbTransaction tran = null, int? commandTimeout = null) where Q : QueryObject
         {
             T t = First(conditionSql, query, tran, commandTimeout);
             if (t == null)
@@ -242,7 +242,7 @@ namespace TianCheng.DAL.NpgByDapper
         /// <param name="tran"></param>
         /// <param name="commandTimeout"></param>
         /// <returns></returns>
-        public IEnumerable<T> Search<Q>(string conditionSql, Q query, IDbTransaction tran = null, int? commandTimeout = null) where Q : QueryInfo
+        public IEnumerable<T> Search<Q>(string conditionSql, Q query, IDbTransaction tran = null, int? commandTimeout = null) where Q : QueryObject
         {
             string sql = $"{DefaultSearchSQL} {conditionSql}";
 
@@ -270,7 +270,7 @@ namespace TianCheng.DAL.NpgByDapper
         /// <param name="tran"></param>
         /// <param name="commandTimeout"></param>
         /// <returns></returns>
-        public IEnumerable<Info> Search<Info, Q>(string conditionSql, Q query, IDbTransaction tran = null, int? commandTimeout = null) where Q : QueryInfo
+        public IEnumerable<Info> Search<Info, Q>(string conditionSql, Q query, IDbTransaction tran = null, int? commandTimeout = null) where Q : QueryObject
         {
             var data = Search(conditionSql, query, tran, commandTimeout);
             if (data == null)
@@ -327,7 +327,7 @@ namespace TianCheng.DAL.NpgByDapper
         /// <param name="tran"></param>
         /// <param name="commandTimeout"></param>
         /// <returns></returns>
-        public int Count<Q>(string conditionSql, Q query, IDbTransaction tran = null, int? commandTimeout = null) where Q : QueryInfo
+        public int Count<Q>(string conditionSql, Q query, IDbTransaction tran = null, int? commandTimeout = null) where Q : QueryObject
         {
             string sql = $"{DefaultCountSQL} {conditionSql}";
 

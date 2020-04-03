@@ -1,7 +1,7 @@
 ﻿namespace WebDemo.Model
 {
 
-    public class MockGuidQuery : TianCheng.DAL.NpgByDapper.QueryInfo
+    public class MockGuidQuery : TianCheng.DAL.NpgByDapper.QueryObject
     {
         public string FirstName { get; set; }
 

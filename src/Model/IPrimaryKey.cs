@@ -3,10 +3,10 @@
 namespace TianCheng.DAL.NpgByDapper
 {
     /// <summary>
-    /// 数据库id列
+    /// 数据库主键接口
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IDbId<T>
+    public interface IPrimaryKey<T>
     {
         /// <summary>
         /// 数据库id

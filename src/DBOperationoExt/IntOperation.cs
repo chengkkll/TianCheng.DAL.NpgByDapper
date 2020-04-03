@@ -10,7 +10,7 @@ namespace TianCheng.DAL.NpgByDapper
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class IntOperation<T> : BaseOperation<T, int>
-        where T : IntId,new()
+        where T : IntPrimaryKey,new()
     {
         
     }

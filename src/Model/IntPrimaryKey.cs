@@ -3,9 +3,9 @@
 namespace TianCheng.DAL.NpgByDapper
 {
     /// <summary>
-    /// int 类型的Id
+    /// int主键
     /// </summary>
-    public class IntId : IDbId<int>
+    public class IntPrimaryKey : IPrimaryKey<int>
     {
         /// <summary>
         /// Id

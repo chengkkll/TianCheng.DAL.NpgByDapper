@@ -8,7 +8,7 @@ namespace TianCheng.DAL.NpgByDapper
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class GuidOperation<T> : BaseOperation<T, Guid>
-        where T : GuidId, new()
+        where T : GuidPrimaryKey, new()
     {
 
     }

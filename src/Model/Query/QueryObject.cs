@@ -5,7 +5,7 @@ namespace TianCheng.DAL.NpgByDapper
     /// <summary>
     /// 查询条件基类
     /// </summary>
-    public class QueryInfo
+    public class QueryObject
     {
         /// <summary>
         /// 排序规则

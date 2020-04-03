@@ -9,7 +9,7 @@ namespace TianCheng.DAL.NpgByDapper
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class StringOperation<T> : BaseOperation<T, string>
-        where T : StringId, new()
+        where T : StringPrimaryKey, new()
     {
 
     }

@@ -4,9 +4,9 @@ using System;
 namespace TianCheng.DAL.NpgByDapper
 {
     /// <summary>
-    /// Guid类型的ID
+    /// Guid主键
     /// </summary>
-    public class GuidId : IDbId<Guid>
+    public class GuidPrimaryKey : IPrimaryKey<Guid>
     {
         /// <summary>
         /// Id

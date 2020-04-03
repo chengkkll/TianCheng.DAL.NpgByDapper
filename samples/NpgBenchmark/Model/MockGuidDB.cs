@@ -15,7 +15,7 @@ namespace NpgBenchmark.Model
         public string ip_address { get; set; }
     }
 
-    public class MockGuidDB : GuidId
+    public class MockGuidDB : GuidPrimaryKey
     {
         public string first_name { get; set; }
         public string last_name { get; set; }
@@ -24,7 +24,7 @@ namespace NpgBenchmark.Model
         public string ip_address { get; set; }
     }
 
-    public class MockIntDB : IntId
+    public class MockIntDB : IntPrimaryKey
     {
         public string first_name { get; set; }
         public string last_name { get; set; }
