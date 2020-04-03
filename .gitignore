@@ -1,0 +1,9 @@
+.git
+.vs
+.vscode
+[Bb]in/
+[Oo]bj/
+[Ll]ogs/
+
+*.log
+*.user

@@ -1,0 +1,13 @@
+﻿{
+  "TianCheng.DB": {
+    "Assembly": [
+      "NpgBenchmark"
+    ],
+    "Connection": [
+      {
+        "Name": "default",
+        "ConnectionString": "User ID=cheng;Password=123qwe;Host=192.168.0.16;Port=5432;Database=provider_manager;Pooling=true;"
+      }
+    ]
+  }
+}
